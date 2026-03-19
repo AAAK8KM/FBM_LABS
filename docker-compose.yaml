@@ -1,0 +1,14 @@
+services:
+  latex-builder:
+    image: texlive/texlive:latest
+    container_name: latex_batch_builder
+    # Монтируем текущую директорию в контейнер
+    volumes:
+      - ./:/workspace
+    # Рабочая директория внутри контейнера
+    working_dir: /workspace
+    # Запускаем наш скрипт вместо стандартной оболочки
+    command: ["/bin/bash", "/workspace/compile_all.sh"]
+    # Важно: чтобы файлы на хосте не принадлежали root, раскомментируйте строку ниже
+    # и замените 1000:1000 на ваш UID:GID (на Linux: echo $UID:$GID)
+    # user: "1000:1000"
