@@ -1,4 +1,7 @@
 \documentclass[12pt,a4paper]{article}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
 \usepackage{cmap}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -27,11 +30,16 @@
 
 \titleformat{\section}[block]
 {\normalfont}{\thesection.}{0 cm}{}
+
 \titleformat{\subsection}[block]
-{\bfseries}{\thesubsection.}{0 cm}{}
+{\normalfont}{\thesubsection.}{0 cm}{}
+
+\titleformat{\subsubsection}[block]
+{\normalfont}{\thesubsubsection.}{0 cm}{}
 
 \titlespacing{\section}{17pt}{14pt}{10pt}
 \titlespacing{\subsection}{17pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{17pt}{14pt}{4pt}
 
 \def \TITLE {Отчет о выполнении лабораторной работы №12}
 \def \SUBTITLE {Изучение режимов истечения из сопла Лаваля}
@@ -78,6 +86,92 @@
 
 \section{ Проведение эксперимента и обработка результатов}
 
+
+\subsection{Измерение критического и выходного диаметров сопла}
+
+\subsubsection{Первое сопло}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{4}{c|}{{Выходной диаметр}} & \multicolumn{2}{c|}{{Критический диаметр}} \\
+\hline
+$x_1$, мм & 7,02 & 4,69 & 9,405 & 6,37 & 6,37 & 4,83 \\
+\hline
+$x_2$, мм & 4,685 & 7,045 & 7,02 & 7,17 & 4,855 & 6,39 \\
+\hline
+$\Delta x$, мм & 2,29 & 2,36 & 2,33 & 2,235 & 1,515 & 1,56 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Второе сопло}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{{Выходной диаметр}} & \multicolumn{2}{c|}{{Критический диаметр}} \\
+\hline
+$x_1$, мм & 8,295 & 6,56 & 8,2 & 6,64 \\
+\hline
+$x_2$, мм & 6,625 & 8,255 & 6,655 & 8,23 \\
+\hline
+$\Delta x$, мм & 1,67 & 1,695 & 1,545 & 1,59 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Расчёт параметров сопел}
+
+\begin{center}
+\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+{Первое сопло:} & {Второе сопло:} \\
+\begin{itemize}
+    \item $d_{\text{крит}} = 1,5375$~мм
+    \item $d_{\text{вых}} = 2,3038$~мм
+    \item Отношение площадей $A/A^* = 2,245$
+    \item Число Маха $M_1 = 2,25$
+\end{itemize}
+&
+\begin{itemize}
+    \item $d_{\text{крит}} = 1,57$~мм
+    \item $d_{\text{вых}} = 1,68$~мм
+    \item Отношение площадей $A/A^* = 1,145$
+    \item Число Маха $M_2 = 1,452$
+\end{itemize}
+\\
+\end{tabular}
+\end{center}
+
+\subsection{Эксперимент}
+
+У манометра $6$~кгс/см$^2$ на $400$ делений, т.е. $0,015$~атм на $1$ деление.
+
+\subsubsection{Первое сопло}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 7$~атм
+    \item Давление торможения $P_0' = 4,15$~атм
+    \item Число Маха $M_1 = 2,316$
+\end{itemize}
+
+\subsubsection{Второе сопло}
+
+\textit{Попытка 1:}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 3,1$~атм
+    \item Давление торможения $P_0' = 3,07$~атм
+    \item Число Маха $M_{2\_1} = 1,532$
+\end{itemize}
+
+\textit{Попытка 2:}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 4,1$~атм
+    \item Давление торможения $P_0' = 3,7$~атм
+    \item Число Маха $M_{2\_2} = 1,58$
+\end{itemize}
 
 \section{ Обсуждение результатов и выводы}
 В ходе данной лабораторной работы были изучены течения с недорасширением, перерасширением, а также близкие к расчетным течения через сопа Лаваля.
