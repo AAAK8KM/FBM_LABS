@@ -1,4 +1,7 @@
 \documentclass[12pt,a4paper]{article}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
 \usepackage{cmap}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -16,6 +19,9 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{indentfirst}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
 \DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it}
 
 %%% Работа с картинками
@@ -27,11 +33,16 @@
 
 \titleformat{\section}[block]
 {\normalfont}{\thesection.}{0 cm}{}
+
 \titleformat{\subsection}[block]
-{\bfseries}{\thesubsection.}{0 cm}{}
+{\normalfont}{\thesubsection.}{0 cm}{}
+
+\titleformat{\subsubsection}[block]
+{\normalfont}{\thesubsubsection.}{0 cm}{}
 
 \titlespacing{\section}{17pt}{14pt}{10pt}
 \titlespacing{\subsection}{17pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{17pt}{14pt}{4pt}
 
 \def \TITLE {Отчет о выполнении лабораторной работы №12}
 \def \SUBTITLE {Изучение режимов истечения из сопла Лаваля}
@@ -78,6 +89,217 @@
 
 \section{ Проведение эксперимента и обработка результатов}
 
+
+\subsection{Измерение критического и выходного диаметров сопла}
+
+\subsubsection{Первое сопло}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{4}{c|}{{Выходной диаметр}} & \multicolumn{2}{c|}{{Критический диаметр}} \\
+\hline
+$x_1$, мм & 7,02 & 4,69 & 9,405 & 6,37 & 6,37 & 4,83 \\
+\hline
+$x_2$, мм & 4,685 & 7,045 & 7,02 & 7,17 & 4,855 & 6,39 \\
+\hline
+$\Delta x$, мм & 2,29 & 2,36 & 2,33 & 2,235 & 1,515 & 1,56 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Второе сопло}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{{Выходной диаметр}} & \multicolumn{2}{c|}{{Критический диаметр}} \\
+\hline
+$x_1$, мм & 8,295 & 6,56 & 8,2 & 6,64 \\
+\hline
+$x_2$, мм & 6,625 & 8,255 & 6,655 & 8,23 \\
+\hline
+$\Delta x$, мм & 1,67 & 1,695 & 1,545 & 1,59 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Расчёт параметров сопел}
+
+\begin{center}
+\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+{Первое сопло:} & {Второе сопло:} \\
+\begin{itemize}
+    \item $d_{\text{крит}} = 1,5375$~мм
+    \item $d_{\text{вых}} = 2,3038$~мм
+    \item Отношение площадей $A/A^* = 2,245$
+    \item Число Маха $M_1 = 2,25$
+\end{itemize}
+&
+\begin{itemize}
+    \item $d_{\text{крит}} = 1,57$~мм
+    \item $d_{\text{вых}} = 1,68$~мм
+    \item Отношение площадей $A/A^* = 1,145$
+    \item Число Маха $M_2 = 1,452$
+\end{itemize}
+\\
+\end{tabular}
+\end{center}
+
+\subsection{Эксперимент}
+
+У манометра $6$~кгс/см$^2$ на $400$ делений, т.е. $0,015$~атм на $1$ деление.
+
+\subsubsection{Первое сопло}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 7$~атм
+    \item Давление торможения $P_0' = 4,15$~атм
+    \item Число Маха $M_1 = 2,316$
+\end{itemize}
+
+\subsubsection{Второе сопло}
+
+\textit{Попытка 1:}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 3,1$~атм
+    \item Давление торможения $P_0' = 3,07$~атм
+    \item Число Маха $M_{2\_1} = 1,532$
+\end{itemize}
+
+\textit{Попытка 2:}
+
+\begin{itemize}
+    \item Давление ресивера $P_0 = 4,1$~атм
+    \item Давление торможения $P_0' = 3,7$~атм
+    \item Число Маха $M_{2\_2} = 1,58$
+\end{itemize}
+
+% Настройка оформления кода
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    morekeywords={*,...},
+    language=Python
+}
+
+
+\section{Вычисление числа Маха двумя способами}
+
+В данном отчёте рассматриваются два итерационных метода расчёта числа Маха:
+\begin{itemize}
+    \item через отношение площадей (метод 1)
+    \item через отношение давлений (метод 2)
+\end{itemize}
+
+Для расчётов принимается показатель адиабаты $\gamma = 1.4$ (воздух).
+
+\begin{enumerate}
+    \item \textbf{ Расчёт через отношение площадей}
+
+
+Итерационная формула для расчёта числа Маха через отношение площадей имеет вид:
+
+\begin{equation}
+M_i = \left[
+\frac{\gamma+1}{\gamma-1}
+\left(\frac{A}{A^*} M_{i-1}\right)^{\frac{2(\gamma-1)}{\gamma+1}}
+- \frac{2}{\gamma-1}
+\right]^{1/2}
+\end{equation}
+
+где:
+\begin{itemize}
+    \item $M_i$ --- число Маха на $i$-й итерации
+    \item $M_{i-1}$ --- число Маха на предыдущей итерации
+    \item $A/A^*$ --- отношение площади сечения к критической площади
+    \item $\gamma = 1.4$ --- показатель адиабаты
+\end{itemize}
+
+
+\begin{lstlisting}[language=Python, caption={Расчёт числа Маха через отношение площадей}]
+gm = 1.4
+f = float(input())  # Отношение площадей A/A*
+M, Mn = 2, 0
+merr = 0.005
+
+while M - Mn > merr:
+    Mn = M
+    M = ((gm+1)/(gm-1) * (f*M)**(2*(gm-1)/(gm+1)) - 2/(gm-1))**0.5
+    print(M, M-Mn)
+\end{lstlisting}
+
+
+\begin{enumerate}
+    \item Задаётся начальное приближение $M_0 = 2$
+    \item Итерационный процесс продолжается до достижения точности $\varepsilon = 0.005$
+    \item На каждой итерации вычисляется новое значение числа Маха по формуле (1)
+    \item Процесс завершается, когда $|M_i - M_{i-1}| \leq \varepsilon$
+\end{enumerate}
+
+\item \textbf{ Расчёт через отношение давлений}
+
+Итерационная формула для расчёта числа Маха через отношение давлений:
+
+\begin{equation}
+M_i^2 = \frac{\gamma-1}{2\gamma} + \frac{\gamma+1}{2\gamma}
+\left(\frac{P_0'}{P_0}\right)^{-\gamma+1}
+\left[
+\frac{2}{\gamma+1}
+\left(\frac{1}{M_{i-1}^2} + \frac{\gamma-1}{2}\right)
+\right]^{-\gamma}
+\end{equation}
+
+где:
+\begin{itemize}
+    \item $M_i$ --- число Маха на $i$-й итерации
+    \item $P_0'/P_0$ --- отношение давлений
+    \item $\gamma = 1.4$ --- показатель адиабаты
+\end{itemize}
+
+
+\begin{lstlisting}[language=Python, caption={Расчёт числа Маха через отношение давлений}]
+gm = 1.4
+p1, p2 = map(float, input().split())  # Отношение давлений
+M, Ms = 4, 1
+n = 10
+i = 0
+
+while abs(M - Ms) > 0.00001 or i < n:
+    Ms = M
+    M = (gm-1)/(2*gm) + (gm+1)/(2*gm) * (p2/p1)**(1-gm) * \
+        (2/(gm+1)*(1/Ms**2 + (gm-1)/2))**(-gm)
+    print(M**0.5, M-Ms)
+    i += 1
+\end{lstlisting}
+
+
+\begin{enumerate}
+    \item Задаётся начальное приближение $M_0 = 4$
+    \item Максимальное число итераций: $n = 10$
+    \item Итерационный процесс продолжается до достижения точности $\varepsilon = 10^{-5}$ или превышения максимального числа итераций
+    \item На каждой итерации вычисляется новое значение $M_i^2$, затем извлекается квадратный корень
+    \item Процесс завершается, когда $|M_i - M_{i-1}| \leq \varepsilon$ или $i \geq n$
+\end{enumerate}
+\end{enumerate}
 
 \section{ Обсуждение результатов и выводы}
 В ходе данной лабораторной работы были изучены течения с недорасширением, перерасширением, а также близкие к расчетным течения через сопа Лаваля.
