@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper]{article}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{cmap}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtext}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{wrapfig}
+\usepackage[english, russian]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    morekeywords={*,...},
+    language=Python
+}
+
+\DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{imgs/}}  % папки с картинками
+
+\usepackage{caption}
+\captionsetup{labelsep=period, labelfont=bf}
+
+\titleformat{\section}[block]
+{\bfseries}{\thesection.}{0 cm}{}
+
+\titleformat{\subsection}[block]
+{\bfseries}{\thesubsection.}{0 cm}{}
+
+\titleformat{\subsubsection}[block]
+{\bfseries}{\thesubsubsection.}{0 cm}{}
+
+\titlespacing{\section}{17pt}{14pt}{10pt}
+\titlespacing{\subsection}{17pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{17pt}{14pt}{4pt}
+
+\def \TITLE {Отчет о выполнении лабораторной работы №1}
+\def \SUBTITLE {Измерение температуры пламени методом
+обращения спектральных линий}
+\def \AUTHOR {Выполнили студенты группы Б03-405\\Подшивалова Анастасия\\Савельева Александра\\Тимохин Даниил\\Трифонова Анна\\Собкина Ксения}
+\def \DATE {16 марта 2026 г.}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\vspace{5cm}
+	{\scshape\large Московский физико-технический институт \\
+	(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ)}
+	
+	\vspace{4cm}
+	{\LARGE \TITLE}
+	
+	\vspace{1cm}
+	{\Huge\bf \SUBTITLE }
+	
+	\vspace{1cm}
+	\vfill
+	
+\begin{flushright}
+	{\LARGE \AUTHOR}
+\end{flushright}
+	
+
+	\vfill
+
+	\DATE
+\end{titlepage}
+
+\newpage
+
+\fontsize{12}{14}\selectfont
+
+\section{ Аннотация}
+
+
+\section{ Теоретическая справка}
+
+
+\section{ Проведение эксперимента и обработка результатов}
+
+
+\section{ Обсуждение результатов и выводы}
+
+
+\end{document}
