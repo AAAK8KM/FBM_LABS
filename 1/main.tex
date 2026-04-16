@@ -1,0 +1,218 @@
+\documentclass[12pt,a4paper]{article}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{cmap}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtext}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{wrapfig}
+\usepackage[english, russian]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    morekeywords={*,...},
+    language=Python
+}
+
+\DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{imgs/}}  % папки с картинками
+
+\usepackage{caption}
+\captionsetup{labelsep=period, labelfont=bf}
+
+\titleformat{\section}[block]
+{\bfseries}{\thesection.}{0 cm}{}
+
+\titleformat{\subsection}[block]
+{\bfseries}{\thesubsection.}{0 cm}{}
+
+\titleformat{\subsubsection}[block]
+{\bfseries}{\thesubsubsection.}{0 cm}{}
+
+\titlespacing{\section}{17pt}{14pt}{10pt}
+\titlespacing{\subsection}{17pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{17pt}{14pt}{4pt}
+
+\def \TITLE {Отчет о выполнении лабораторной работы №1}
+\def \SUBTITLE {Измерение температуры пламени методом
+обращения спектральных линий}
+\def \AUTHOR {Выполнили студенты группы Б03-405\\Подшивалова Анастасия\\Савельева Александра\\Тимохин Даниил\\Трифонова Анна\\Собкина Ксения}
+\def \DATE {16 марта 2026 г.}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\vspace{5cm}
+	{\scshape\large Московский физико-технический институт \\
+	(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ)}
+	
+	\vspace{4cm}
+	{\LARGE \TITLE}
+	
+	\vspace{1cm}
+	{\Huge\bf \SUBTITLE }
+	
+	\vspace{1cm}
+	\vfill
+	
+\begin{flushright}
+	{\LARGE \AUTHOR}
+\end{flushright}
+	
+
+	\vfill
+
+	\DATE
+\end{titlepage}
+
+\newpage
+
+\fontsize{12}{14}\selectfont
+
+\section{Введение}
+
+\subsection{Цель работы}
+\begin{itemize}
+    \item ознакомление с методом обращения спектральных линий;
+    \item применение метода обращения спектральных линий для нахождения температуры пламени.
+\end{itemize}
+
+\subsection{Оборудование}
+\begin{itemize}
+    \item метан и кислород для образования пламени в горелке;
+    \item соль как источник Na;
+    \item линза;
+    \item спектрометр;
+    \item лампа;
+    \item пирометр ЛОП-72.
+\end{itemize}
+
+
+\section{ Теоретическая справка}
+В данной работе исследуется температура объектов двумя способами: обращением спектральных линий и пирометром с исчезающей нитью.
+
+\subsection{ Пирометр}
+Работа пирометра основана на сравнении интенсивности света, излучаемого, с одной стороны, объектом, температуру которого измеряют, и, с другой стороны, фотометрической лампой накаливания. В силу того, что спектральные характеристики объекта и нити накаливания пирометра могут отличаться, уравнять визуально наблюдаемые интенсивности излучения объекта и нити во всём спектральном диапазоне чувствительности глаза невозможно. Поэтому применяется фильтр для вырезания достаточно узкого участка спектра излучения. Нить накаливания фотометрической лампы предварительно градуируют путём сравнения с излучением чёрного тела.
+
+Принцип устройства пирометра с исчезающей нитью представлен на рис.1. Фильтр пропускает свет с длиной волны в интервале \(\Delta\lambda\). Изображение части светящейся поверхности тела и нити лампы наблюдается одновременно с помощью окуляра. Значение тока, соответствующее равенству интенсивностей излучения нити и изображения (исчезновение нити на фоне изображения), позволяет измерить температуру тела с использованием предварительной калибровки прибора по чёрному телу.
+
+Так как параметры градуируются по излучению чёрного тела, то температура, определённая таким образом, равна яркостной температуре \(T_b\), которую имело бы чёрное тело с тем же тепловым излучением, что и излучаемый объект. Так как измерение температуры основано на равенстве интенсивностей света, то из распределения Планка можно записать:
+
+\begin{equation}
+\varepsilon_{\lambda,n}(T) = \frac{C_1}{e^{C_2/(\lambda T)} - 1} 
+= \frac{C_1}{e^{C_2/(\lambda T_b)} - 1}
+\end{equation}
+
+где 
+\begin{equation}
+C_1 = 2\pi hc^2 = 3{,}74 \cdot 10^{-16} \; \text{Вт} \cdot \text{м}^2,
+\qquad 
+C_2 = \frac{hc}{k} = 1{,}44 \cdot 10^{-2} \; \text{К} \cdot \text{м}.
+\end{equation}
+
+В приближении, используемом в лабораторной работе, данное соотношение можно переписать в виде:
+\begin{equation}
+\frac{1}{T} = \frac{1}{T_b} + \frac{\lambda}{C_2} \ln \bigl( \varepsilon_{\lambda,n}(T) \bigr)
+\end{equation}
+
+где \(\lambda_{\text{ж}} = 589\) нм — длина волны свечения резонансных линий натрия; \(\lambda_{\text{кр}} = 650 \pm 10\) нм — длина волны, проходящая через пирометр.
+
+Погрешность измерения тока на пирометре \(\Delta I = 5\) мА.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{1.png} 
+    \caption{Схема установки}
+    \label{fig:example}
+\end{figure}
+
+
+Нагретые газы, чаще всего, не обладают тепловым излучением, однако, если в них находятся
+примеси атомов, находящиеся в термодинамическом равновесии с горячим газом, то такие ато-
+мы могут излучать практически монохроматические линии в определенных участках видимого
+спектра за счет возбуждения электронных переходов.
+
+Фильтр - монохроматор на вырезает очень узкий спектральный диапазон, в который по-
+падает спектральная линия излучающей примеси и раскладывает его спектр. Изменяя элек-
+трический ток через фотометрическую лампу, можно добиться уравнивания интенсивностей
+излучения пламени и фотометрической лампы, тем самым осуществив баланс интенсивностей
+- температура пламени равна яркостной температуре фотометрической лампы.
+
+Яркостная температура ленты фотометрической лампы, соответствующая обращению спек-
+тральных линий.
+
+
+
+
+
+
+\section{ Проведение эксперимента и обработка результатов}
+Сначала воспользуемся методом обращения спектральных линий для нахождения при каких параметрах тока япкость лампы совпадает с яркостью пламени.
+
+После для каждого параметра тока надем параметры тока, при которых вольфрамовая нить сливается с излучением лампы.
+
+\begin{table}[h]
+\centering
+\caption{Измерения}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Ток лампы, A} & \textbf{Ток пирометра, дел} & \textbf{Ток пирометра, A} \\\hline
+$12.1$   & $67$ & $0.335$ \\\hline
+$16.3$   & $66$ & $0.33$ \\\hline
+$17.4$   & $60$ & $0.34$ \\\hline
+$16.8$   & $66$ & $0.33$ \\\hline
+$17.2$   & $54$ & $0.27$ \\\hline
+\end{tabular}
+\end{table}
+
+Сначала вычислим средний ток через спираль пирометра. $I=0.335$ А.
+
+Теперь, имея данные о параметрах самой устанвки из формулы(), так как температура не мнеяется, но меняется исследуемая длина волны, то можно вычислить температуру пламени
+
+\begin{equation}
+    T=\frac{T_b C_2}{C_2+T_b(\lambda_ж - \lambda_к)\ln{\varepsilon}},
+\end{equation}
+
+где $\varepsilon=0.48$, $C_2=1.44*10^{-2}$ К/м, $T_b=1825$ K - температура, взятая с калибровочного графика пирометра.
+
+Подставив данные, находим температуру пламени $T=1850$ K. 
+
+\section{ Обсуждение результатов и выводы}
+
+
+\end{document}
